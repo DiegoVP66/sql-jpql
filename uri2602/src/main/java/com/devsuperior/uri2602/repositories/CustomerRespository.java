@@ -12,6 +12,8 @@ import com.devsuperior.uri2602.projections.CustomerMinProjection;
 @Repository
 public interface CustomerRespository extends JpaRepository<Customer, Long> {
 	
-	@Query()
+	@Query(nativeQuery = true, value = "SELECT name "
+			+ "FROM customers "
+			+ "WHERE state = :state")
 	List<CustomerMinProjection> search1(String state);
 }
