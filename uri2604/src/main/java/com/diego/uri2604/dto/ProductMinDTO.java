@@ -5,6 +5,7 @@ import java.io.Serializable;
 import com.diego.uri2604.projections.ProductMinProjection;
 
 public class ProductMinDTO implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 	private Long id;
 	private String name;
@@ -18,8 +19,8 @@ public class ProductMinDTO implements Serializable {
 	}
 
 	public ProductMinDTO(ProductMinProjection obj) {
-		this.id = obj.getId();
-		this.name = obj.getName();
+		id = obj.getId();
+		name = obj.getName();
 	}
 
 	public Long getId() {

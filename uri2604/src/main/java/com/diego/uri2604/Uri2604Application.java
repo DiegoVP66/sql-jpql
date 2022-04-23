@@ -14,10 +14,10 @@ import com.diego.uri2604.repositories.ProductRepository;
 
 @SpringBootApplication
 public class Uri2604Application implements CommandLineRunner {
-	
+
 	@Autowired
 	private ProductRepository repository;
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(Uri2604Application.class, args);
 	}
@@ -25,13 +25,20 @@ public class Uri2604Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		List<ProductMinProjection> list = repository.search1(10, 100);
-		List<ProductMinDTO> result1 = list.stream().map(x -> new  ProductMinDTO(x)).collect(Collectors.toList());
-		
+		List<ProductMinDTO> result1 = list.stream().map(x -> new ProductMinDTO(x)).collect(Collectors.toList());
+
 		System.out.println("\n*** RESULT SQL RAIZ");
-		for(ProductMinDTO obj : result1) {
+		for (ProductMinDTO obj : result1) {
 			System.out.println(obj);
 		}
 		System.out.println("\n\n");
+
+		List<ProductMinDTO> result2 = repository.search2(10.0, 100.0);
+
+		System.out.println("\n*** RESULT JPQL");
+		for (ProductMinDTO obj : result2) {
+			System.out.println(obj);
+		}
 	}
 
 }
