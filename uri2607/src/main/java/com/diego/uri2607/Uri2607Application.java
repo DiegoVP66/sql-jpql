@@ -33,6 +33,13 @@ public class Uri2607Application implements CommandLineRunner {
 		}
 		System.out.println("\n\n\n");
 
+		List<ProviderMinDTO> result2 = repository.search2();
+
+		System.out.println("\n***JPQL");
+		for (ProviderMinDTO obj : result2) {
+			System.out.println(obj);
+		}
+
 	}
 
 }
