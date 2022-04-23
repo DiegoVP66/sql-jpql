@@ -13,11 +13,11 @@ public class Movie {
 	@Id
 	private Long id;
 	private String name;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "id_genres")
 	private Genre genre;
-	
+
 	public Movie() {
 	}
 

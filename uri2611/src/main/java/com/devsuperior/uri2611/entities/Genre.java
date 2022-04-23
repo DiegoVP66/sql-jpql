@@ -15,10 +15,10 @@ public class Genre {
 	@Id
 	private Long id;
 	private String description;
-	
+
 	@OneToMany(mappedBy = "genre")
 	private List<Movie> movies = new ArrayList<>();
-	
+
 	public Genre() {
 	}
 
