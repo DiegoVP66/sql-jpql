@@ -26,8 +26,16 @@ public class Uri2609Application implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		List<CategorySumProjection> list = repository.search1();
 		List<CategorySumDTO> result1 = list.stream().map(x -> new CategorySumDTO(x)).collect(Collectors.toList());
-		
+		System.out.println("\n*** SQL");
 		for(CategorySumDTO obj: result1) {
+			System.out.println(obj);
+		}
+		System.out.println("\n\n\n");
+		
+		List<CategorySumDTO> result2 = repository.search2();
+		
+		System.out.println("\n*** JPQL");
+		for(CategorySumDTO obj: result2) {
 			System.out.println(obj);
 		}
 	}
