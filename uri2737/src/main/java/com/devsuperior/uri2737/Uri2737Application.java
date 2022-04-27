@@ -1,10 +1,15 @@
 package com.devsuperior.uri2737;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.devsuperior.uri2737.dto.LawyerMinDTO;
+import com.devsuperior.uri2737.projections.LawyerMinProjection;
 import com.devsuperior.uri2737.repositories.LawyerRepository;
 
 @SpringBootApplication
@@ -19,7 +24,22 @@ public class Uri2737Application implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		List<LawyerMinProjection> list1 = repository.search1();
+		List<LawyerMinDTO> result1 = list1.stream().map(x -> new LawyerMinDTO(x)).collect(Collectors.toList());
 		
-
+		System.out.println("\n*** SQL 1");
+		for(LawyerMinDTO obj: result1) {
+			System.out.println(obj);
+		}
+		System.out.println("\n\n\n");
+		
+		List<LawyerMinProjection> lis2 = repository.search1();
+		List<LawyerMinDTO> result2 = lis2.stream().map(x -> new LawyerMinDTO(x)).collect(Collectors.toList());
+		
+		System.out.println("\n*** SQL 2");
+		for(LawyerMinDTO obj: result2) {
+			System.out.println(obj);
+		}
+		System.out.println("\n\n\n");
 	}
 }
