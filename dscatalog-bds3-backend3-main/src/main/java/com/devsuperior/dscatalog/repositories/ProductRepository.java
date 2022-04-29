@@ -17,6 +17,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 			+ "INNER JOIN obj.categories cats "
 			+ "WHERE (:category IS NULL OR :category IN cats)"
 			+ "AND "
-			+ "(LOWER(obj.name) LIKE LOWER(CONCAT('%',:name,'%')) )")
+			+ "(:name = '' OR LOWER(obj.name) LIKE LOWER(CONCAT('%',:name,'%')) )")
 	Page<Product> find(Category category,String name, Pageable pageable);
 }
